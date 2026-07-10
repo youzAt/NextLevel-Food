@@ -1,8 +1,16 @@
+import { Suspense } from "react";
 import Link from "next/link";
 
 import MealsGrid from "@/components/meals/MealsGrid";
 
+import { getMeals } from "@/lib/meals";
+
 import styles from "./page.module.css";
+
+const Meals = async () => {
+	const meals = await getMeals();
+	return <MealsGrid meals={meals} />;
+};
 
 const MealsPage = () => {
 	return (
@@ -23,8 +31,14 @@ const MealsPage = () => {
 				</p>
 			</header>
 			<main className={styles.main}>
-                <MealsGrid meals={[]} />
-            </main>
+				<Suspense
+					fallback={
+						<p className={styles.loading}>Loading Meals...</p>
+					}
+				>
+					<Meals />
+				</Suspense>
+			</main>
 		</>
 	);
 };
