@@ -12,7 +12,9 @@
     "better-sqlite3": "^12.11.1",
     "next": "16.2.9",
     "react": "^19",
-    "react-dom": "^19"
+    "react-dom": "^19",
+    "slugify": "^1.6.9",
+    "xss": "^1.0.15"
   },
   "devDependencies": {
     "@types/node": "26.1.1",
