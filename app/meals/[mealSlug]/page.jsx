@@ -5,6 +5,17 @@ import { getMeal } from "@/lib/meals";
 import styles from "./page.module.css";
 import { notFound } from "next/navigation";
 
+export const generateMetadata = async ({params})=>{
+	const {mealSlug} = await params;
+	const meal = getMeal(mealSlug);
+	if (!meal) notFound();
+	return {
+		title: meal.title,
+		description: meal.summary,
+	};
+
+}
+
 const MealDetailPage = async ({ params }) => {
 	const { mealSlug } = await params;
 	const meal = getMeal(mealSlug);

@@ -8,6 +8,11 @@ import { shareMeal } from "@/lib/actions";
 
 import styles from "./page.module.css";
 
+export const metadata = {
+	title: "Share Meal",
+	description: "share you meals and recipes",
+};
+
 export default function ShareMealPage() {
 	const [state, formAction] = useFormState(shareMeal, { message: null });
 	return (
